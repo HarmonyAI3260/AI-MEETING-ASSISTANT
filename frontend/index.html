@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Meeting Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body>
+    <div id="app-root">
+        <div class="app-container">
+            <header class="app-header">
+                <div class="logo">
+                    <h1>AI Meeting Assistant</h1>
+                </div>
+                <div class="connection-status">
+                    <span id="status-indicator" class="status-indicator disconnected"></span>
+                    <span id="status-text">Disconnected</span>
+                </div>
+            </header>
+            
+            <main class="app-content">
+                <div class="platform-selector">
+                    <h3>Select Meeting Platform</h3>
+                    <div class="platform-buttons">
+                        <button class="platform-btn" data-platform="zoom">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4401/4401471.png" alt="Zoom" width="24">
+                            Zoom
+                        </button>
+                        <button class="platform-btn" data-platform="teams">
+                            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968912.png" alt="Microsoft Teams" width="24">
+                            Teams
+                        </button>
+                        <button class="platform-btn" data-platform="meet">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2965/2965327.png" alt="Google Meet" width="24">
+                            Meet
+                        </button>
+                        <button class="platform-btn" data-platform="default">
+                            <img src="https://cdn-icons-png.flaticon.com/512/709/709682.png" alt="System Mic" width="24">
+                            System Mic
+                        </button>
+                    </div>
+                    <div class="meeting-id-input">
+                        <input type="text" id="meeting-id" placeholder="Meeting ID or URL (optional)">
+                        <button id="connect-btn" class="connect-btn">Connect</button>
+                    </div>
+                </div>
+                
+                <div class="answers-container">
+                    <h3>AI Answers</h3>
+                    <div id="answers-list" class="answers-list">
+                        <div class="empty-state">
+                            <p>Questions detected during the meeting will appear here.</p>
+                            <p>The AI will automatically generate answers in real-time.</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <footer class="app-footer">
+                <p>© 2025 AI Meeting Assistant | <a href="#" id="settings-link">Settings</a></p>
+            </footer>
+            
+            <div id="settings-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>Settings</h2>
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label for="api-key">OpenAI API Key</label>
+                            <input type="password" id="api-key" placeholder="Enter your OpenAI API Key">
+                        </div>
+                        <div class="form-group">
+                            <label>Answer Display</label>
+                            <div class="radio-group">
+                                <input type="radio" name="display-mode" id="floating" value="floating" checked>
+                                <label for="floating">Floating Window</label>
+                                <input type="radio" name="display-mode" id="sidebar" value="sidebar">
+                                <label for="sidebar">Sidebar</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="max-answers">Maximum Answers to Show</label>
+                            <select id="max-answers">
+                                <option value="3">3</option>
+                                <option value="5" selected>5</option>
+                                <option value="10">10</option>
+                                <option value="0">All</option>
+                            </select>
+                        </div>
+                        <button id="save-settings" class="save-btn">Save Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./src/utils/websocket.js"></script>
+    <script src="./src/services/meeting-service.js"></script>
+    <script src="./src/app.js"></script>
+</body>
+</html>
