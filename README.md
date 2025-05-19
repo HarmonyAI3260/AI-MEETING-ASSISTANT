@@ -1,4 +1,5 @@
 # AI Meeting Assistant
+**AI-powered real-time meeting assistant**
 
 An AI-powered real-time meeting assistant that listens to questions during meetings and automatically displays answers on your screen.
 
