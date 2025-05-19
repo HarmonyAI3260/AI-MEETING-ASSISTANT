@@ -43,7 +43,7 @@ app.add_middleware(
 audio_service = AudioService()
 question_detector = QuestionDetector()
 answer_generator = AnswerGenerator()
-platform_manager = PlatformManager()
+platform_manager = PlatformManager(audio_service)
 
 # WebSocket connection manager
 class ConnectionManager:
